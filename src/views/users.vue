@@ -83,7 +83,7 @@ const paginatedUsers = computed(() => {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(user, index) in paginatedUsers" :key="user.id">
+        <tr v-for="(user) in paginatedUsers" :key="user.id">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
@@ -95,9 +95,23 @@ const paginatedUsers = computed(() => {
 
     <div>
       <button @click="previousPage" :disabled="currentPage === 1">前へ</button> <!-- 前のページに移動するボタン -->
-      <button v-for="page in totalPages" :key="page" @click="() => goToPage(page)" :disabled="page === currentPage">
-        {{ page }}
-      </button> <!-- ページ番号ボタン -->
+
+      <template v-if="totalPages > 1">
+        <button v-if="currentPage > 1" @click="() => goToPage(currentPage - 1)">
+          {{ currentPage - 1 }}
+        </button>
+        <button @click="() => goToPage(currentPage)">{{ currentPage }}</button>
+        <button v-if="currentPage < totalPages" @click="() => goToPage(currentPage + 1)">
+          {{ currentPage + 1 }}
+        </button>
+        <template v-if="currentPage < totalPages - 1">
+          <span>...</span>
+          <button :key="totalPages" @click="() => goToPage(totalPages)">
+            {{ totalPages }}
+          </button>
+        </template>
+      </template>
+
       <button @click="nextPage" :disabled="currentPage === totalPages">次へ</button> <!-- 次のページに移動するボタン -->
     </div>
   </div>
