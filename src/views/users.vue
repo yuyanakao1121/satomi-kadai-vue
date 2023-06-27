@@ -88,6 +88,9 @@ const paginatedUsers = computed(() => {
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
+          <td>
+            <img :src="`src/components/icons/${user.profileImage}`" alt="Profile Image" />
+          </td>
           <button @click="() => remove(user)">❌</button> <!-- ユーザーの削除ボタン -->
           <button @click="() => update(user)">🖋</button> <!-- ユーザーの編集ボタン -->
         </tr>
