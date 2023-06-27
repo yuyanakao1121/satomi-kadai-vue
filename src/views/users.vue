@@ -78,6 +78,7 @@ const paginatedUsers = computed(() => {
           <th>ID</th>
           <th>名前</th>
           <th>メールアドレス</th>
+          <th>プロフィール画像</th>
           <th>削除</th>
           <th>編集</th>
         </tr>

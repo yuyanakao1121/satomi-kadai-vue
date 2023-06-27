@@ -6,7 +6,8 @@ export const unchi = defineStore('counter', () => {
   const id =ref()
   const name = ref("")
   const email = ref("")
-  return { id,name,email }
+  const profileImage =ref("")
+  return { id,name,email,profileImage }
 })
 
 /*
